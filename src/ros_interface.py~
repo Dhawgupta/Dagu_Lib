@@ -11,6 +11,8 @@ from std_msgs.msg import Int32
 from std_msgs.msg import Float32
 from sample_rc_throt import car
 from time import sleep
+from sample_rc_throt import car
+
 
 
 def throtCb(data):
@@ -27,6 +29,7 @@ sub = rospy.Subscriber('thort',Int32, throtCb)
 rate = rospy.Rate(10) # 10 Hz
 rospy.spin()
 while not rospy.is_shutdown():
-    speed = dagu.aleft + dagu.aright
+
     pub.publish()
-    rate.sleep()
+	rate.sleep()
+

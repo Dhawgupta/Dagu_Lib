@@ -46,14 +46,14 @@ class car:
         # throttle value will be between 0 - 100
         # we will run a loop which will change the speed of vheel basically rate in chaneg of voltage
         if(throt > 0):
-            if(self.alef == 255 or self.arig == 255):
+            if(self.alef >= 220 or self.arig >= 220):
                 print "Max Speed Achieved"
             else:
-                forward(self.alef +  throt , self.arig + thort)
+                self.forward(self.alef +  throt , self.arig + throt)
                 time.sleep(0.01)
         if(throt < 0):
-            if(self.alef == 0 or self.arig   == 0):
+            if(self.alef <= 20 or self.arig   <= 20):
                 print "Min Speed Achieved"
             else:
-                forward(self.alef -  throt , self.arig - thort)
+                self.forward(self.alef +  throt , self.arig + throt)
                 time.sleep(0.01)

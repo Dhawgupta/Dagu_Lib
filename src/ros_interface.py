@@ -13,20 +13,25 @@ from sample_rc_throt import car
 from time import sleep
 
 
+
 def throtCb(data):
     dagu.throttle(data.data)
     sleep(0.1)
     dagu.throttle(0)
+    pub.publish((dagu.alef  + dagu.arig)/2.0)
 
 
 
 dagu = car()
 rospy.init_node('Car')
-pub = rospy.Publisher('vel',Float32, queue_size = 10)
+pub = rospy.Publisher('vel',Float32, queue_size = 1)
 sub = rospy.Subscriber('thort',Int32, throtCb)
-rate = rospy.Rate(10) # 10 Hz
-rospy.spin()
+rate = rospy.Rate(1) # 10 Hz
+
+
 while not rospy.is_shutdown():
-    speed = dagu.aleft + dagu.aright
-    pub.publish()
-    rate.sleep()
+    print "Entering the loop"
+    speed = (dagu.alef + dagu.arig)/2.0
+    pub.publish(speed)
+    rospy.spin()
+
